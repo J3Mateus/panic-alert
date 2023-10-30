@@ -1,0 +1,10 @@
+# comment
+.vscode
+configs
+logs
+media_root
+run/media
+run/static
+static
+venv
+**/*.sample

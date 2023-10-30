@@ -1,0 +1,27 @@
+from django.db.models.query import QuerySet
+
+from apps.users.filters import BaseUserFilter
+from apps.users.models import BaseUser
+
+def user_get_login_data(*, user: BaseUser):
+    return {
+        "id": user.id,
+        "first_name": user.first_name,
+        "last_name": user.last_name,
+        "email": user.email,
+        "is_active": user.is_active,
+        "is_admin": user.is_admin,
+        "is_superuser": user.is_superuser,
+    }
+
+def user_get(*,pk: str) -> BaseUser:
+    user = BaseUser.objects.get(pk=pk)
+    
+    return user 
+
+def user_list(*, filters=None) -> QuerySet[BaseUser]:
+    filters = filters or {}
+
+    qs = BaseUser.objects.all()
+
+    return BaseUserFilter(filters, qs).qs
