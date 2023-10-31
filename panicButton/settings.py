@@ -50,7 +50,6 @@ SESSION_ENGINE = "django.contrib.sessions.backends.db"
 LOCAL_APPS = [
     'apps.authentication',
     'apps.core',
-    'apps.educator',
     'apps.school',
     'apps.common',
     'apps.users',

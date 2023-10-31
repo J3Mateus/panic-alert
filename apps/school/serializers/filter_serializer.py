@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-class FilterSerializer(serializers.Serializer):
+class SchoolFilterSerializer(serializers.Serializer):
     id = serializers.UUIDField(required=False)
     responsible = serializers.UUIDField(required=False, allow_null=True, default=None)
     created_by  = serializers.UUIDField(required=False, allow_null=True, default=None)

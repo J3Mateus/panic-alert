@@ -16,6 +16,7 @@ from apps.docs.authentication.jwt.responses import  RESPONSE_AUTHENTICATION_LOGI
 from apps.docs.authentication.me.responses import RESPONSE_ME
 from apps.docs.authentication.session.requests import REQUEST_AUTHENTICATION_LOGIN_SESSION
 from apps.docs.authentication.session.response import RESPONSE_AUTHENTICATION_LOGIN_SESSION
+from apps.users.serializers.output_serializer import UserOutputSerializer as OutputSerializerUser
 
 
 
@@ -139,6 +140,7 @@ class UserJwtLogoutApi(ApiAuthMixin, APIView):
         return response
 
 class UserMeApi(ApiAuthMixin, APIView):
+    output_serializer = OutputSerializerUser
     """
         Rota para obter informações do usuário autenticado.
 
@@ -150,7 +152,12 @@ class UserMeApi(ApiAuthMixin, APIView):
         operation_description='''Esta rota permite aos usuários autenticados obter informações sobre sua própria conta, como nome de usuário,email e outros detalhes relacionados.''',
         responses=RESPONSE_ME
     )
-    def get(self, request):
-        data = user_get_login_data(user=request.user)
 
+    def get(self, request):
+        user = user_get_login_data(user=request.user)
+
+        if user is None:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        data = self.output_serializer(user).data
+        
         return Response(data)

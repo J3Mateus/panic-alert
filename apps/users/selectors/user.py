@@ -1,18 +1,15 @@
 from django.db.models.query import QuerySet
+from django.http import Http404
+from django.shortcuts import get_object_or_404
 
 from apps.users.filters import BaseUserFilter
 from apps.users.models import BaseUser
 
 def user_get_login_data(*, user: BaseUser):
-    return {
-        "id": user.id,
-        "first_name": user.first_name,
-        "last_name": user.last_name,
-        "email": user.email,
-        "is_active": user.is_active,
-        "is_admin": user.is_admin,
-        "is_superuser": user.is_superuser,
-    }
+    try:
+        return get_object_or_404(BaseUser, id=user.id)
+    except Http404:
+       return None
 
 def user_get(*,pk: str) -> BaseUser:
     user = BaseUser.objects.get(pk=pk)

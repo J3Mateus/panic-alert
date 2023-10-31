@@ -1,15 +1,24 @@
 from rest_framework import serializers
 
-from apps.users.serializers.output_serializer import OutputSerializer as SerializerUser
-
-
-class OutputSerializer(serializers.Serializer):
+class BaseUserSerializer(serializers.Serializer):
+    id = serializers.UUIDField()
+    first_name = serializers.CharField()
+    last_name  = serializers.CharField()
+    email      = serializers.CharField()
+    phone      = serializers.CharField()
+    whatsapp   = serializers.CharField()
+    is_active  = serializers.BooleanField()
+    is_admin   = serializers.BooleanField()
+    created_at = serializers.DateTimeField()
+    updated_at = serializers.DateTimeField()
+    
+class SchoolOutputSerializer(serializers.Serializer):
     id = serializers.CharField()
-    responsible = SerializerUser()
+    responsible  = BaseUserSerializer()
     name = serializers.CharField()
     address = serializers.CharField()
     geolocation = serializers.CharField()
     is_deleted = serializers.BooleanField()
-    created_by = SerializerUser()
+    created_by = BaseUserSerializer()
     created_at = serializers.DateTimeField()
     updated_at = serializers.DateTimeField()
