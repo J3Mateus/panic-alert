@@ -34,6 +34,7 @@ class UserSessionLoginApi(APIView):
     
     input_Serializer = InputSerializer
     @swagger_auto_schema(
+        operation_summary='Realize o login usando sessões de autenticação do Django.',
         operation_description='''Rota para realizar o login usando sessões de autenticação do Django.
       
         #Usuario padrão
@@ -76,6 +77,7 @@ class UserSessionLogoutApi(APIView):
     
     
     @swagger_auto_schema(
+        operation_summary='Realize o logout e encerre a sessão do usuário.',
         operation_description="Utilize esta rota para encerrar a sessão ativa do usuário e efetuar o logout com segurança.",
         responses={200: "Sessão encerrada com sucesso."}
         )
@@ -100,6 +102,7 @@ class UserJwtLoginApi(TokenObtainPairView):
 
 
     @swagger_auto_schema(
+        operation_summary='Realize o login usando JWT (JSON Web Token).',
         request_body=REQUEST_AUTHENTICATION_LOGIN_JWT,
         operation_description='''Esta rota permite aos usuários autenticarem-se no sistema e obter um token JWT válido para acessar recursos protegidos.
         
@@ -128,6 +131,7 @@ class UserJwtLogoutApi(ApiAuthMixin, APIView):
     
     """
     @swagger_auto_schema(
+        operation_summary='Realize o logout e revogue os tokens JWT de um usuário autenticado.',
         operation_description='''Esta rota permite aos usuários encerrarem sua sessão ativa no sistema e revogarem os tokens JWT associados à sua autenticação.''',
         request_body=REQUEST_AUTHENTICATION_LOGOUT_JWT,
         responses=RESPONSE_AUTHENTICATION_LOGOUT_JWT
@@ -149,6 +153,7 @@ class UserMeApi(ApiAuthMixin, APIView):
     
     """
     @swagger_auto_schema(
+        operation_summary='Obtenha informações do usuário autenticado.',
         operation_description='''Esta rota permite aos usuários autenticados obter informações sobre sua própria conta, como nome de usuário,email e outros detalhes relacionados.''',
         responses=RESPONSE_ME
     )

@@ -4,4 +4,5 @@ urlpatterns = [
     path("auth/", include(("apps.authentication.urls", "authentication"))),
     path("users/", include(("apps.users.urls", "users"))),
     path("school/", include(("apps.school.urls", "school"))),
+    path("role/", include(("apps.role.urls", "role"))),
 ]

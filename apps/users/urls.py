@@ -4,7 +4,6 @@ from apps.users.api import (
     UserListApi,
     UserCreateApi,
     UserDeleteApi
-    
 )
 
 urlpatterns = [

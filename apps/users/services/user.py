@@ -9,7 +9,16 @@ from django.contrib.auth.hashers import make_password
 
 
 def user_create(
-    *, email: str,phone: str,whatsapp: str, is_active: bool = True, is_admin: bool = False,first_name: str, last_name: str, created_by: BaseUser,schools: [str], password: Optional[str] = None
+    *, email: str,phone: str,
+    whatsapp: str, 
+    is_active: bool = True, 
+    is_admin: bool = False,
+    first_name: str, 
+    last_name: str, 
+    created_by: BaseUser,
+    schools: [str],
+    roles: [str],
+    password: Optional[str] = None
 ) -> BaseUser:
     user = BaseUser.objects.create(email=email,phone=phone,whatsapp=whatsapp,
                                   first_name=first_name,last_name=last_name,
@@ -18,7 +27,10 @@ def user_create(
     
     for school in schools:
         user.school.add(school)
-        
+    
+    for role in roles:
+        user.role.add(role)
+            
     user.save()
     return user
 

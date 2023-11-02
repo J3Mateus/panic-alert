@@ -1,19 +1,26 @@
+# Imports do Django REST framework
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
+# Imports relacionados à paginação da API
 from apps.api.pagination import (
     LimitOffsetPagination,
     get_paginated_response,
 )
 
+# Imports relacionados aos usuários
 from apps.users.selectors import user_list
 from apps.users.services.user import user_create, user_delete
 
+# Imports relacionados à autenticação da API
 from apps.api.mixins import ApiAuthMixin
-from apps.users.serializers.output_serializer import UserOutputSerializer 
+
+# Imports de serializadores de usuários
+from apps.users.serializers.output_serializer import UserOutputSerializer
 from apps.users.serializers.filter_serializer import UserFilterSerializer
 from apps.users.serializers.input_serializer import UserInputSerializer
+
 
 class UserListApi(ApiAuthMixin,APIView):
     

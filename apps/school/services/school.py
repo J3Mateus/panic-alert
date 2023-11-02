@@ -25,11 +25,14 @@ def school_update(*,school: School, data: dict) -> School:
     fields = ['name', 'address','responsible',"geolocation"]
     school, has_updated = model_update(instance=school, fields=fields, data=data)
     
-    return school
+    return school , has_updated
 
 @transaction.atomic
 def school_delete(*,id:str) -> School:
     school = school_get(school=School, id=id)
+    if school is None:
+        return school
+    
     school.full_clean()
     school.delete()
     

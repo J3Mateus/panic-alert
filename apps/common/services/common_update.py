@@ -6,6 +6,9 @@ from apps.common.types.django_model_type import DjangoModelType
 def model_update(
     *, instance: DjangoModelType, fields: List[str], data: Dict[str, Any], auto_updated_at=True
 ) -> Tuple[DjangoModelType, bool]:
+    if instance is None:
+        return None, False  # Handle None instance gracefully
+    
     has_updated = False
     m2m_data = {}
     update_fields = []

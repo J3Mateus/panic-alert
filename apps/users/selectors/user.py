@@ -11,10 +11,12 @@ def user_get_login_data(*, user: BaseUser):
     except Http404:
        return None
 
-def user_get(*,pk: str) -> BaseUser:
-    user = BaseUser.objects.get(pk=pk)
+def user_get(*,pk: str) -> BaseUser | None:
+    try:
+        return get_object_or_404(BaseUser, id=pk)
+    except Http404:
+       return None
     
-    return user 
 
 def user_list(*, filters=None) -> QuerySet[BaseUser]:
     filters = filters or {}

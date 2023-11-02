@@ -41,7 +41,16 @@ QUERY_PARAM_DETAIL_SCHOOL = [
     openapi.Parameter(
         name="school_id",
         in_=openapi.IN_PATH,
-        type=openapi.TYPE_INTEGER,
+        type=openapi.TYPE_STRING,
         description="O ID da escola que deseja recuperar os detalhes.",
+    ),
+]
+
+QUERY_PARAM_DELETE_SCHOOL = [
+    openapi.Parameter(
+        name="school_id",
+        in_=openapi.IN_PATH,
+        type=openapi.TYPE_STRING,
+        description="O ID da escola que deseja deletar.",
     ),
 ]

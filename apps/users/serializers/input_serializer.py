@@ -4,6 +4,7 @@ class UserInputSerializer(serializers.Serializer):
     email = serializers.CharField(required=True)
     phone = serializers.CharField(required=True)
     schools = serializers.ListField(required=True)
+    roles = serializers.ListField(required=True)
     whatsapp =  serializers.CharField(required=True)
     is_admin = serializers.BooleanField(required=False)
     first_name = serializers.CharField(required=True)

@@ -2,19 +2,26 @@ from rest_framework import serializers
 
 from apps.school.serializers.output_serializer import SchoolOutputSerializer
 
-
+class RolesOutputSerializer(serializers.Serializer):
+    id = serializers.UUIDField()
+    name = serializers.CharField()
+    code = serializers.CharField()
+    
 class UserOutputSerializer(serializers.Serializer):
     id = serializers.UUIDField()
-    first_name = serializers.CharField()
-    last_name  = serializers.CharField()
+    full_name  = serializers.SerializerMethodField()
+    role       = serializers.SerializerMethodField()
     email      = serializers.CharField()
     phone      = serializers.CharField()
-    school = serializers.SerializerMethodField()
+    school     = serializers.SerializerMethodField()
     whatsapp   = serializers.CharField()
-    is_active  = serializers.BooleanField()
-    is_admin   = serializers.BooleanField()
-    created_at = serializers.DateTimeField()
-    updated_at = serializers.DateTimeField()
+
+    def get_full_name(self,obj):
+        return obj.get_full_name()
+    
+    def get_role(self,obj):
+        roles = obj.role.all()
+        return RolesOutputSerializer(roles,many=True).data
     
     def get_school(self, obj):
         # obj é a instância do modelo User que está sendo serializada

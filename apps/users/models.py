@@ -6,6 +6,7 @@ from django.contrib.auth.models import PermissionsMixin
 from django.db import models
 
 from apps.common.models.base_model import BaseModel
+from apps.role.models import Roles
 from apps.school.models import School
 
 # Taken from here:
@@ -75,7 +76,10 @@ class BaseUser(BaseModel, AbstractBaseUser, PermissionsMixin):
     deleted_by = models.ForeignKey('self', null=True, blank=True, on_delete=models.SET_NULL, related_name='deleted_users')
     school = models.ManyToManyField(School, related_name='users_school', related_query_name='school_user',
                                 through='BaseUserSchool', through_fields=('base_user', 'school'))
-
+    
+    role = models.ManyToManyField(Roles, related_name='users_role', related_query_name='role_user',
+                                through='BaseUserRoles', through_fields=('base_user', 'role'))
+    
     # This should potentially be an encrypted field
     jwt_key = models.UUIDField(default=uuid.uuid4)
 
@@ -103,3 +107,14 @@ class BaseUserSchool(models.Model):
         db_table = f'{app_label}_base_user_school'
         verbose_name = 'Escola do usuario'
         verbose_name_plural = 'Escolas dos usuarios'
+        
+class BaseUserRoles(models.Model):
+    uuid         = models.UUIDField(default=uuid.uuid4, primary_key=True)
+    base_user    = models.ForeignKey(BaseUser, on_delete=models.CASCADE)
+    role         = models.ForeignKey(Roles, on_delete=models.CASCADE)
+
+    class Meta:
+        app_label = 'users'
+        db_table = f'{app_label}_base_user_roles'
+        verbose_name = 'Função do usuario'
+        verbose_name_plural = 'Função dos usuarios'
