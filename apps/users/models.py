@@ -6,6 +6,7 @@ from django.contrib.auth.models import PermissionsMixin
 from django.db import models
 
 from apps.common.models.base_model import BaseModel
+from apps.cop.models import COP
 from apps.role.models import Roles
 from apps.school.models import School
 
@@ -79,7 +80,8 @@ class BaseUser(BaseModel, AbstractBaseUser, PermissionsMixin):
     
     role = models.ManyToManyField(Roles, related_name='users_role', related_query_name='role_user',
                                 through='BaseUserRoles', through_fields=('base_user', 'role'))
-    
+    cop = models.ManyToManyField(COP, related_name='users_cop', related_query_name='cop_user',
+                                through='BaseUserCop', through_fields=('base_user', 'cop'))   
     # This should potentially be an encrypted field
     jwt_key = models.UUIDField(default=uuid.uuid4)
 
@@ -118,3 +120,14 @@ class BaseUserRoles(models.Model):
         db_table = f'{app_label}_base_user_roles'
         verbose_name = 'Função do usuario'
         verbose_name_plural = 'Função dos usuarios'
+
+class BaseUserCop(models.Model):
+    uuid         = models.UUIDField(default=uuid.uuid4, primary_key=True)
+    base_user    = models.ForeignKey(BaseUser, on_delete=models.CASCADE)
+    cop         = models.ForeignKey(COP, on_delete=models.CASCADE)
+
+    class Meta:
+        app_label = 'users'
+        db_table = f'{app_label}_base_user_cop'
+        verbose_name = 'Delegacia do usuario'
+        verbose_name_plural = 'Delegacias dos usuarios'

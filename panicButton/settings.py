@@ -55,6 +55,7 @@ LOCAL_APPS = [
     'apps.users',
     'apps.api',
     'apps.role',
+    'apps.cop'
 ]
 
 THIRD_PARTY_APPS = [

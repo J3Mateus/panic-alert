@@ -7,7 +7,8 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.hashers import make_password
 
 from apps.common.services.common_update import model_update
-from apps.users.exceptions import RoleNotFoundValidationError, SchoolNotFoundValidationError, UserNotFoundValidationError
+from apps.cop.models import COP
+from apps.users.exceptions import COPNotFoundValidationError, RoleNotFoundValidationError, SchoolNotFoundValidationError, UserNotFoundValidationError
 from apps.users.models import BaseUser
 from apps.role.models import Roles
 from apps.school.models import School
@@ -25,6 +26,7 @@ def user_create(
     created_by: BaseUser,
     schools: [str] = [],
     roles: [str],
+    cops:[str],
     password: Optional[str] = None
 ) -> BaseUser:    
     user = BaseUser.objects.create(email=email,phone=phone,whatsapp=whatsapp,
@@ -45,14 +47,21 @@ def user_create(
             user.role.add(role)
         except ObjectDoesNotExist:
             raise RoleNotFoundValidationError(f"O papel com o UUID({role_id})  fornecido não existe no banco de dados.",code='422')
-            
+   
+    for cops_id in cops:
+        try:
+            cop = COP.objects.get(id=cops_id)
+            user.cop.add(cop)
+        except ObjectDoesNotExist:
+            raise COPNotFoundValidationError(f"A delegacia com o UUID({cops_id})  fornecido não existe no banco de dados.",code='422')
+                
     user.save()
     return user
 
 
 @transaction.atomic
 def user_update(*, user: BaseUser, data) -> BaseUser:
-    non_side_effect_fields = ["first_name", "last_name","role","school","email","phone","whatsapp","is_deleted"]
+    non_side_effect_fields = ["first_name", "last_name","role","school","cop","email","phone","whatsapp","is_deleted"]
 
     user, has_updated = model_update(instance=user, fields=non_side_effect_fields, data=data)
 

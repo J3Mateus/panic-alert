@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from apps.cop.serializers.output_serializer import COPOutputSerializer
 
 from apps.school.serializers.output_serializer import SchoolOutputSerializer
 
@@ -14,12 +15,17 @@ class UserOutputSerializer(serializers.Serializer):
     email      = serializers.CharField()
     phone      = serializers.CharField()
     school     = serializers.SerializerMethodField()
+    cops        = serializers.SerializerMethodField()
     whatsapp   = serializers.CharField()
     is_deleted = serializers.BooleanField()
     
     def get_full_name(self,obj):
         return obj.get_full_name()
     
+    def get_cops(self,obj):
+        cop = obj.cop.all()
+        return COPOutputSerializer(cop,many=True).data   
+     
     def get_role(self,obj):
         roles = obj.role.all()
         return RolesOutputSerializer(roles,many=True).data

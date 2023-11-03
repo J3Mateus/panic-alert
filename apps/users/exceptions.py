@@ -8,3 +8,6 @@ class RoleNotFoundValidationError(ValidationError):
 
 class UserNotFoundValidationError(ValidationError):
     pass
+
+class COPNotFoundValidationError(ValidationError):
+    pass
