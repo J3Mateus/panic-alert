@@ -127,10 +127,10 @@ class SchoolUpdateApi(ApiAuthMixin, APIView):
         serializer = self.input_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         school = school_get(school=School, id=school_id)
-        school_new = school_update(school=school,data=serializer.validated_data)
-        if school_new is None:
+        if school is None:
             return Response(status=status.HTTP_404_NOT_FOUND)
         
+        school_new = school_update(school=school,data=serializer.validated_data)
         data = self.output_serializer(school_new).data
         return Response(status=status.HTTP_202_ACCEPTED,data=data)
 

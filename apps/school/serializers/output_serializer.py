@@ -12,7 +12,7 @@ class BaseUserSerializer(serializers.Serializer):
         return obj.get_full_name()
     
 class SchoolOutputSerializer(serializers.Serializer):
-    id = serializers.CharField()
+    id = serializers.UUIDField()
     responsible  = BaseUserSerializer()
     name = serializers.CharField()
     address = serializers.CharField()
