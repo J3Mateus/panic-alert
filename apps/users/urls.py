@@ -3,7 +3,8 @@ from django.urls import path,include
 from apps.users.api import (
     UserListApi,
     UserCreateApi,
-    UserDeleteApi
+    UserDeleteApi,
+    UserUpdateApi
 )
 
 urlpatterns = [
@@ -30,11 +31,22 @@ urlpatterns = [
         ),
     ),
     path(
+        "update/",
+        include(
+            (
+                [
+                  path("<str:user_id>", UserUpdateApi.as_view(), name="update_user"),
+                ],
+                "update",
+            )
+        ),
+    ),
+    path(
         "delete/",
         include(
             (
                 [
-                  path("<str:user_id>", UserDeleteApi.as_view(), name="update_user"),
+                  path("<str:user_id>", UserDeleteApi.as_view(), name="delete_user"),
                 ],
                 "delete",
             )

@@ -8,12 +8,14 @@ from apps.api.mixins import ApiAuthMixin
 
 # Imports relacionados à paginação da API
 from apps.api.pagination import LimitOffsetPagination, get_paginated_response
+from apps.docs.role.response import RESPONSE_ROLE_LIST
 
 # Imports relacionados aos papéis (roles)
 from apps.role.selectors.selector import role_list
 from apps.role.serializers.filter_serializer import RoleFilterSerializer
 from apps.role.serializers.output_serializer import RolesSerializer
-
+# Imports do drf-yasg (geração de documentação Swagger)
+from drf_yasg.utils import swagger_auto_schema
 
 class RolesListApi(ApiAuthMixin,APIView):
     
@@ -22,7 +24,11 @@ class RolesListApi(ApiAuthMixin,APIView):
 
     output_serializer = RolesSerializer
     filter_serializer = RoleFilterSerializer
-
+    @swagger_auto_schema(
+        operation_summary="Listar Roles",
+        operation_description="Esta rota permite listar as roles com os filtros fornecidos. As roles serão retornadas de acordo com os filtros aplicados.",
+        responses=RESPONSE_ROLE_LIST,
+    )
     def get(self, request):
         
         filters_serializer = self.filter_serializer(data=request.query_params)

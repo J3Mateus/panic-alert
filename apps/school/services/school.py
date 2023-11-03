@@ -22,7 +22,7 @@ def school_create(*,name: str,address: str,responsible: str,geolocation: str,use
 
 @transaction.atomic
 def school_update(*,school: School, data: dict) -> School:
-    fields = ['name', 'address','responsible',"geolocation"]
+    fields = ['name', 'address','responsible',"geolocation","is_deleted"]
     school, has_updated = model_update(instance=school, fields=fields, data=data)
     
     return school , has_updated

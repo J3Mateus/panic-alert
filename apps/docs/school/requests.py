@@ -17,6 +17,7 @@ REQUEST_SCHOOL_UPDATE = openapi.Schema(
         "name": openapi.Schema(type=openapi.TYPE_STRING, description="O nome da escola"),
         "address": openapi.Schema(type=openapi.TYPE_STRING, description="O endereço da escola"),
         "responsible": openapi.Schema(type=openapi.TYPE_STRING, description="O nome do responsável pela escola"),
-        "geolocation": openapi.Schema(type=openapi.TYPE_STRING, description="A geolocalização da escola"),       
+        "geolocation": openapi.Schema(type=openapi.TYPE_STRING, description="A geolocalização da escola"),      
+        "is_deleted": openapi.Schema(type=openapi.TYPE_STRING, description="Estado da escola no banco de dados"),      
     }
 )

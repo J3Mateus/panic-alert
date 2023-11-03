@@ -7,6 +7,7 @@ from rest_framework.serializers import as_serializer_error
 from rest_framework.views import exception_handler
 
 from apps.core.exceptions import ApplicationError
+from apps.users.exceptions import RoleNotFoundValidationError, SchoolNotFoundValidationError
 
 def drf_default_with_modifications_exception_handler(exc, ctx):
     if isinstance(exc, DjangoValidationError):
@@ -42,6 +43,16 @@ def personalized_exception_handler(exc, ctx):
     if isinstance(exc, Http404):
         exc = exceptions.NotFound()
 
+    if isinstance(exc, SchoolNotFoundValidationError):
+        # Trate a exceção SchoolNotFoundValidationError aqui
+        data = {"message": str(exc), "extra": {}}
+        return Response(data, status=422)
+
+    if isinstance(exc, RoleNotFoundValidationError):
+        # Trate a exceção RoleNotFoundValidationError aqui
+        data = {"message": str(exc), "extra": {}}
+        return Response(data, status=422)
+         
     if isinstance(exc, PermissionDenied):
         exc = exceptions.PermissionDenied()
 

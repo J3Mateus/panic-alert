@@ -15,7 +15,8 @@ class UserOutputSerializer(serializers.Serializer):
     phone      = serializers.CharField()
     school     = serializers.SerializerMethodField()
     whatsapp   = serializers.CharField()
-
+    is_deleted = serializers.BooleanField()
+    
     def get_full_name(self,obj):
         return obj.get_full_name()
     
