@@ -36,14 +36,8 @@ Após configurar o ambiente virtual, você pode instalar as dependências do pro
 1. Abra o terminal e navegue até a pasta raiz do seu projeto.
    ```shell
      pip install -r requirements/requirements.txt
-   
-## Passo 4: Configurando o Banco de Dados
-
-1. Abra o terminal e navegue até a pasta raiz do seu projeto.
-   ```shell
-    python manage.py migrate
-   
-## Passo 5: Configurando o arquivo .env
+      
+## Passo 4: Configurando o arquivo .env
 1. Crie um arquivo chamado .env na raiz do seu projeto.
   ```env
     DJANGO_DATABASE_URL="postgres://postgres:1234@localhost:5432/school-alert"
@@ -58,3 +52,9 @@ Após configurar o ambiente virtual, você pode instalar as dependências do pro
     
     DOCKER_PROJECT_NAME=alerta-escolar
     DOCKER_NGINX_PORT=8000
+   ```
+## Passo 5: Configurando o Banco de Dados
+
+1. Abra o terminal e navegue até a pasta raiz do seu projeto.
+   ```shell
+    python manage.py migrate
