@@ -1,11 +1,13 @@
 DTO_ME_SUCCESS = {
-    "id": "ID_do_usuário",
-    "first_name": "primeiro_nome_do_usuario",
-    "last_name": "ultimo_nome_do_usuario",
-    "email": "seu_email",
-    "is_active": "usuario_ativo",
-    "is_admin":"usuario_é_admin",
-    "is_superuser":"usuario_è_super_usuario"
+	"id": "762ffa0d-da4d-4baf-bbf2-51bd4bb0e17a",
+	"full_name": "José Mateus",
+	"role": [],
+	"email": "admin@admin.com",
+	"phone": "82 9913-2309",
+	"school": [],
+	"cops": [],
+	"whatsapp": "82 9914-2959",
+	"is_deleted": False
 }
 
 DTO_VALIDATION_ERRO_ME = {
