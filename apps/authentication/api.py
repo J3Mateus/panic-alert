@@ -5,6 +5,7 @@ from rest_framework.views import APIView
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework_simplejwt.views import TokenObtainPairView
 from apps.api.mixins import ApiAuthMixin
+from apps.authentication.selector import get_user_from_access_token_in_django_rest_framework_simplejwt
 from apps.authentication.serializers.input_serializer import InputSerializer
 
 from apps.authentication.services import auth_logout
@@ -109,14 +110,22 @@ class UserJwtLoginApi(TokenObtainPairView):
         #Usuario padrão
         email:admin@admin.com
         password:admin
-        ''',
+        ''',    
         responses=RESPONSE_AUTHENTICATION_LOGIN_JWT
         )  
     def post(self, request, *args, **kwargs):
         # We are redefining post so we can change the response status on success
         # Mostly for consistency with the session-based API
-        response = super().post(request, *args, **kwargs)
-
+        response = super().post(request, *args, **kwargs)  
+        
+        user = get_user_from_access_token_in_django_rest_framework_simplejwt(response.data.get("access"))
+        
+        if user.is_deleted:
+            return Response(status=status.HTTP_401_UNAUTHORIZED,data={
+                            "message": "Este usuário foi desativado.",
+                            "extra": {}
+                            })
+        
         if response.status_code == status.HTTP_201_CREATED:
             response.status_code = status.HTTP_200_OK
 

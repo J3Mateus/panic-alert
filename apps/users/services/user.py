@@ -24,9 +24,9 @@ def user_create(
     first_name: str, 
     last_name: str, 
     created_by: BaseUser,
-    schools: [str] = [],
+    schools: Optional[str] = [],
     roles: [str],
-    cops:[str] = [],
+    cops:Optional[str] = [],
     password: Optional[str] = None
 ) -> BaseUser:    
     user = BaseUser.objects.create(email=email,phone=phone,whatsapp=whatsapp,
@@ -61,7 +61,7 @@ def user_create(
 
 @transaction.atomic
 def user_update(*, user: BaseUser, data) -> BaseUser:
-    non_side_effect_fields = ["first_name", "last_name","role","school","cop","email","phone","whatsapp","is_deleted"]
+    non_side_effect_fields = ["first_name", "last_name","role","school","cop","email","phone","whatsapp","  "]
 
     user, has_updated = model_update(instance=user, fields=non_side_effect_fields, data=data)
 
@@ -80,7 +80,6 @@ def user_delete(*,id:str) -> BaseUser:
     except ObjectDoesNotExist:
         raise UserNotFoundValidationError(f"O usuário com o UUID({id}) fornecido não existe no banco de dados.",code='422')
         
-    user.full_clean()
     user.delete()
 
     return user

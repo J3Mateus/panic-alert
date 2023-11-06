@@ -36,3 +36,8 @@ DTO_VALIDATION_ERRO_LOGOUT_JWT = {
 	},
 	"extra": {}
 }
+
+DTO_VALIDATION_USER_DELETED_JWT = {
+	"message": "Este usuário foi desativado.",
+	"extra": {}
+}
