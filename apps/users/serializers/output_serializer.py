@@ -10,14 +10,14 @@ class RolesOutputSerializer(serializers.Serializer):
     
 class UserOutputSerializer(serializers.Serializer):
     id = serializers.UUIDField()
-    full_name  = serializers.SerializerMethodField()
-    role       = serializers.SerializerMethodField()
-    email      = serializers.CharField()
-    phone      = serializers.CharField()
-    school     = serializers.SerializerMethodField()
-    cops        = serializers.SerializerMethodField()
-    whatsapp   = serializers.CharField()
-    is_deleted = serializers.BooleanField()
+    full_name  = serializers.SerializerMethodField(required=False)
+    role       = serializers.SerializerMethodField(required=False)
+    email      = serializers.CharField(required=False)
+    phone      = serializers.CharField(required=False)
+    school     = serializers.SerializerMethodField(required=False)
+    cops        = serializers.SerializerMethodField(required=False)
+    whatsapp   = serializers.CharField(required=False)
+    is_deleted = serializers.BooleanField(required=False)
     
     def get_full_name(self,obj):
         return obj.get_full_name()
