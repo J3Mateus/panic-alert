@@ -26,7 +26,7 @@ def user_create(
     created_by: BaseUser,
     schools: [str] = [],
     roles: [str],
-    cops:[str],
+    cops:[str] = [],
     password: Optional[str] = None
 ) -> BaseUser:    
     user = BaseUser.objects.create(email=email,phone=phone,whatsapp=whatsapp,
