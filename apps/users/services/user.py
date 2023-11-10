@@ -21,8 +21,7 @@ def user_create(
     whatsapp: str, 
     is_active: bool = True, 
     is_admin: bool = False,
-    first_name: str, 
-    last_name: str, 
+    full_name: str, 
     created_by: BaseUser,
     schools: Optional[str] = [],
     roles: [str],
@@ -30,7 +29,7 @@ def user_create(
     password: Optional[str] = None
 ) -> BaseUser:    
     user = BaseUser.objects.create(email=email,phone=phone,whatsapp=whatsapp,
-                                  first_name=first_name,last_name=last_name,
+                                  full_name=full_name,
                                   created_by=created_by,is_active=is_active, 
                                   is_admin=is_admin,password=make_password(password))
     
@@ -61,7 +60,7 @@ def user_create(
 
 @transaction.atomic
 def user_update(*, user: BaseUser, data) -> BaseUser:
-    non_side_effect_fields = ["first_name", "last_name","role","school","cop","email","phone","whatsapp","  "]
+    non_side_effect_fields = ["full_name","role","school","cop","email","phone","whatsapp","  "]
 
     user, has_updated = model_update(instance=user, fields=non_side_effect_fields, data=data)
 

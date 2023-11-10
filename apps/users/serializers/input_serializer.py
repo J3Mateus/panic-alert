@@ -8,8 +8,7 @@ class UserCreateInputSerializer(serializers.Serializer):
     cops  = serializers.ListField(required=False)
     whatsapp =  serializers.CharField(required=True)
     is_admin = serializers.BooleanField(required=False)
-    first_name = serializers.CharField(required=True)
-    last_name =  serializers.CharField(required=True)
+    full_name = serializers.CharField(required=True)
     password  = serializers.CharField(required=True)
 
 class UserUpdateInputSerializer(serializers.Serializer):
@@ -20,6 +19,5 @@ class UserUpdateInputSerializer(serializers.Serializer):
     cop  = serializers.ListField(required=False)
     whatsapp =  serializers.CharField(required=False)
     is_admin = serializers.BooleanField(required=False)
-    first_name = serializers.CharField(required=False)
-    last_name =  serializers.CharField(required=False)
+    full_name = serializers.CharField(required=False)
     password  = serializers.CharField(required=False)

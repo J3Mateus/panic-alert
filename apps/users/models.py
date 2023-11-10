@@ -16,15 +16,14 @@ from apps.school.models import School
 
 
 class BaseUserManager(BUM):
-    def create_user(self, email,phone,whatsapp,first_name,last_name,created_by=None,deleted_by=None, is_active=True, is_admin=False, password=None):
+    def create_user(self, email,phone,whatsapp,full_name,created_by=None,deleted_by=None, is_active=True, is_admin=False, password=None):
         if not email:
             raise ValueError("Users must have an email address")
 
         user = self.model(email=self.normalize_email(email.lower()),
                           phone=phone,
                           whatsapp=whatsapp,
-                          first_name=first_name,
-                          last_name=last_name,
+                          full_name=full_name,
                           created_by=created_by,
                           deleted_by=deleted_by,
                           is_active=is_active,
@@ -41,13 +40,12 @@ class BaseUserManager(BUM):
 
         return user
 
-    def create_superuser(self, email,phone,whatsapp, first_name,last_name, password=None):
+    def create_superuser(self, email,phone,whatsapp, full_name, password=None):
         user = self.create_user(
             email=email,
             phone=phone,
             whatsapp=whatsapp,
-            first_name=first_name,
-            last_name=last_name,
+            full_name=full_name,
             is_active=True,
             is_admin=True,
             password=password,
@@ -71,8 +69,7 @@ class BaseUser(BaseModel, AbstractBaseUser, PermissionsMixin):
     whatsapp = models.CharField(null=True,verbose_name='whatsapp')
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
-    first_name = models.CharField(verbose_name="first name",max_length=200)
-    last_name = models.CharField(verbose_name="last name",max_length=200)
+    full_name = models.CharField(verbose_name="Nome completo do usuário",max_length=250,null=True,blank=True)
     created_by = models.ForeignKey('self', null=True, blank=True, on_delete=models.SET_NULL, related_name='created_users')
     deleted_by = models.ForeignKey('self', null=True, blank=True, on_delete=models.SET_NULL, related_name='deleted_users')
     school = models.ManyToManyField(School, related_name='users_school', related_query_name='school_user',
@@ -88,13 +85,13 @@ class BaseUser(BaseModel, AbstractBaseUser, PermissionsMixin):
     objects = BaseUserManager()
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ['first_name','last_name','phone','whatsapp']
+    REQUIRED_FIELDS = ['full_name','phone','whatsapp']
     
     def __str__(self):
         return self.email
     
     def get_full_name(self):
-        return f'{self.first_name} {self.last_name}'
+        return f'{self.full_name}'
     
     def is_staff(self):
         return self.is_admin

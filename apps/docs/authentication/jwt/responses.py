@@ -17,7 +17,7 @@ RESPONSE_AUTHENTICATION_LOGIN_JWT = {
      401: openapi.Response(description='Falha na autenticação. Verifique as credenciais fornecidas.',examples={
           'application/json':DTO_VALIDATION_ERRO_EMAIL_AND_PASSWORD_JWT,
         }),
-     400: openapi.Response(description='Falha na autenticação. usuário foi desativado.', examples={
+     401: openapi.Response(description='Falha na autenticação. usuário foi desativado.', examples={
             'application/json':DTO_VALIDATION_USER_DELETED_JWT,
         }),
      400: openapi.Response(description='Requisição malformada ou dados ausentes.', examples={

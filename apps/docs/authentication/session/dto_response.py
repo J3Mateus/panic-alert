@@ -16,8 +16,7 @@ DTO_SUCCESS_SESSION = {
     "session": "sua_sessão_id",
     "data": {
         "id": "ID_do_usuário",
-        "first_name": "primeiro_nome_do_usuario",
-        "last_name": "ultimo_nome_do_usuario",
+		"full_name": "Nome completo do usuário",
         "email": "seu_email",
         "is_active": "usuario_ativo",
         "is_admin":"usuario_é_admin",

@@ -28,8 +28,7 @@ DTO_RESPONSE_DETAIL_SCHOOL = {
 	"id": "1f1d362c-fb03-4a04-be91-c34d13647cd9",
 	"responsible": {
 		"id": "2fb35ca3-5128-4026-aedb-578c32231aa1",
-		"first_name": "José",
-		"last_name": "Mateus",
+		"full_name": "José Mateus",
 		"email": "admin@admin.com",
 		"is_admin": True
 	},
@@ -39,8 +38,7 @@ DTO_RESPONSE_DETAIL_SCHOOL = {
 	"is_deleted": False,
 	"created_by": {
 		"id": "2fb35ca3-5128-4026-aedb-578c32231aa1",
-		"first_name": "José",
-		"last_name": "Mateus",
+		"full_name": "José Mateus",
 		"email": "admin@admin.com",
 		"is_admin": True
 	},
