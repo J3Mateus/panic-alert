@@ -1,10 +1,10 @@
 DTO_ME_SUCCESS = {
 	"id": "762ffa0d-da4d-4baf-bbf2-51bd4bb0e17a",
 	"full_name": "José Mateus",
-	"role": [],
+	"roles": [],
 	"email": "admin@admin.com",
 	"phone": "82 9913-2309",
-	"school": [],
+	"schools": [],
 	"cops": [],
 	"whatsapp": "82 9914-2959",
 	"is_deleted": False

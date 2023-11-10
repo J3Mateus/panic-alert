@@ -14,7 +14,7 @@ class UserOutputSerializer(serializers.Serializer):
     role       = serializers.SerializerMethodField(required=False)
     email      = serializers.CharField(required=False)
     phone      = serializers.CharField(required=False)
-    school     = serializers.SerializerMethodField(required=False)
+    schools     = serializers.SerializerMethodField(required=False)
     cops        = serializers.SerializerMethodField(required=False)
     whatsapp   = serializers.CharField(required=False)
     is_deleted = serializers.BooleanField(required=False)

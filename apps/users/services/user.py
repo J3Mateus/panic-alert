@@ -36,21 +36,21 @@ def user_create(
     for school_id in schools:
         try:
             school = School.objects.get(id=school_id)
-            user.school.add(school)
+            user.schools.add(school)
         except ObjectDoesNotExist:
             raise SchoolNotFoundValidationError(f"A escola com o UUID({school_id}) fornecido não existe no banco de dados.",code='422')
     
     for role_id in roles:
         try:
             role = Roles.objects.get(id=role_id)
-            user.role.add(role)
+            user.roles.add(role)
         except ObjectDoesNotExist:
             raise RoleNotFoundValidationError(f"O papel com o UUID({role_id})  fornecido não existe no banco de dados.",code='422')
    
     for cops_id in cops:
         try:
             cop = COP.objects.get(id=cops_id)
-            user.cop.add(cop)
+            user.cops.add(cop)
         except ObjectDoesNotExist:
             raise COPNotFoundValidationError(f"A delegacia com o UUID({cops_id})  fornecido não existe no banco de dados.",code='422')
                 
@@ -60,7 +60,7 @@ def user_create(
 
 @transaction.atomic
 def user_update(*, user: BaseUser, data) -> BaseUser:
-    non_side_effect_fields = ["full_name","role","school","cop","email","phone","whatsapp","  "]
+    non_side_effect_fields = ["full_name","roles","schools","cops","email","phone","whatsapp","  "]
 
     user, has_updated = model_update(instance=user, fields=non_side_effect_fields, data=data)
 

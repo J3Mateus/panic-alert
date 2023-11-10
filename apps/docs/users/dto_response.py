@@ -8,20 +8,20 @@ DTO_RESPONSE_GET_ALL= {
 		{
 			"id": "762ffa0d-da4d-4baf-bbf2-51bd4bb0e17a",
 			"full_name": "José Mateus",
-			"role": [],
+			"roles": [],
 			"email": "admin@admin.com",
 			"phone": "82 9913-2309",
-			"school": [],
+			"schools": [],
 			"whatsapp": "82 9914-2959",
 			"is_deleted": False
 		},
 		{
 			"id": "0646d9c5-3e97-4293-9f7e-d89e4ea5fcbf",
 			"full_name": "José Mateus",
-			"role": [],
+			"roles": [],
 			"email": "professor@gmail.com",
 			"phone": "(82) 9.9913-3059",
-			"school": [],
+			"schools": [],
 			"whatsapp": "(82) 9.9913-3059",
 			"is_deleted": False
 		}
@@ -31,7 +31,7 @@ DTO_RESPONSE_GET_ALL= {
 DTO_RESPONSE_CREATE = {
 	"id": "7f8ca468-f7dc-42e6-8941-4918ef021242",
 	"full_name": "José Mateus",
-	"role": [
+	"roles": [
 		{
 			"id": "8344a3af-29ef-435e-ada0-861c304c365b",
 			"name": "ADMINISTRADOR",
@@ -40,7 +40,7 @@ DTO_RESPONSE_CREATE = {
 	],
 	"email": "rian@gmail.com",
 	"phone": "(82) 9.9913-3059",
-	"school": [
+	"schools": [
 		{
 			"id": "d377c265-c11a-467c-b044-ddf792b428c3",
 			"responsible": {
@@ -110,10 +110,10 @@ DTO_RESPONSE_BAD_REQUEST_NOT_FIELD = {
 DTO_RESPONSE_DELETE_SUCESS = {
 	"id": "762ffa0d-da4d-4baf-bbf2-51bd4bb0e17a",
 	"full_name": "José Mateus",
-	"role": [],
+	"roles": [],
 	"email": "admin@admin.com",
 	"phone": "82 9913-2309",
-	"school": [],
+	"schools": [],
 	"whatsapp": "82 9914-2959",
 	"is_deleted": True
 }
@@ -121,7 +121,7 @@ DTO_RESPONSE_DELETE_SUCESS = {
 DTO_RESPONSE_UPDATE_SUCESS = {
 	"id": "7f8ca468-f7dc-42e6-8941-4918ef021242",
 	"full_name": "José Mateus",
-	"role": [
+	"roles": [
 		{
 			"id": "8344a3af-29ef-435e-ada0-861c304c365b",
 			"name": "ADMINISTRADOR",
@@ -130,7 +130,7 @@ DTO_RESPONSE_UPDATE_SUCESS = {
 	],
 	"email": "rian@gmail.com",
 	"phone": "(82) 9.9913-3059",
-	"school": [
+	"schools": [
 		{
 			"id": "d377c265-c11a-467c-b044-ddf792b428c3",
 			"responsible": {

@@ -14,9 +14,9 @@ class UserCreateInputSerializer(serializers.Serializer):
 class UserUpdateInputSerializer(serializers.Serializer):
     email = serializers.CharField(required=False)
     phone = serializers.CharField(required=False)
-    school = serializers.ListField(required=False)
-    role = serializers.ListField(required=False)
-    cop  = serializers.ListField(required=False)
+    schools = serializers.ListField(required=False)
+    roles = serializers.ListField(required=False)
+    cops  = serializers.ListField(required=False)
     whatsapp =  serializers.CharField(required=False)
     is_admin = serializers.BooleanField(required=False)
     full_name = serializers.CharField(required=False)

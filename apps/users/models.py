@@ -72,12 +72,12 @@ class BaseUser(BaseModel, AbstractBaseUser, PermissionsMixin):
     full_name = models.CharField(verbose_name="Nome completo do usuário",max_length=250,null=True,blank=True)
     created_by = models.ForeignKey('self', null=True, blank=True, on_delete=models.SET_NULL, related_name='created_users')
     deleted_by = models.ForeignKey('self', null=True, blank=True, on_delete=models.SET_NULL, related_name='deleted_users')
-    school = models.ManyToManyField(School, related_name='users_school', related_query_name='school_user',
+    schools = models.ManyToManyField(School, related_name='users_school', related_query_name='school_user',
                                 through='BaseUserSchool', through_fields=('base_user', 'school'))
     
-    role = models.ManyToManyField(Roles, related_name='users_role', related_query_name='role_user',
+    roles = models.ManyToManyField(Roles, related_name='users_role', related_query_name='role_user',
                                 through='BaseUserRoles', through_fields=('base_user', 'role'))
-    cop = models.ManyToManyField(COP, related_name='users_cop', related_query_name='cop_user',
+    cops = models.ManyToManyField(COP, related_name='users_cop', related_query_name='cop_user',
                                 through='BaseUserCop', through_fields=('base_user', 'cop'))   
     # This should potentially be an encrypted field
     jwt_key = models.UUIDField(default=uuid.uuid4)

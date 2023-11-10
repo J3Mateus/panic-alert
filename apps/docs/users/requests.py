@@ -24,8 +24,8 @@ REQUEST_USER_UPDATE = openapi.Schema(
         'whatsapp': openapi.Schema(type=openapi.TYPE_STRING, description='Número do WhatsApp do usuário'),
         'full_name': openapi.Schema(type=openapi.TYPE_STRING, description='Nome completo do usuário'),
         'password': openapi.Schema(type=openapi.TYPE_STRING, description='Senha do usuário'),
-        'role': openapi.Schema(type=openapi.TYPE_ARRAY,items=openapi.Items(type=openapi.TYPE_STRING), description='Funções do usuário'),
-        'cop': openapi.Schema(type=openapi.TYPE_ARRAY,items=openapi.Items(type=openapi.TYPE_STRING), description='ID das delegacias associada ao usuário'), 
-        'school': openapi.Schema(type=openapi.TYPE_STRING, description='ID das escolas associadas ao usuário'),
+        'roles': openapi.Schema(type=openapi.TYPE_ARRAY,items=openapi.Items(type=openapi.TYPE_STRING), description='Funções do usuário'),
+        'cops': openapi.Schema(type=openapi.TYPE_ARRAY,items=openapi.Items(type=openapi.TYPE_STRING), description='ID das delegacias associada ao usuário'), 
+        'schools': openapi.Schema(type=openapi.TYPE_STRING, description='ID das escolas associadas ao usuário'),
     },
 )
