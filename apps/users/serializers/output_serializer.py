@@ -20,15 +20,15 @@ class UserOutputSerializer(serializers.Serializer):
     is_deleted = serializers.BooleanField(required=False)
      
     def get_cops(self,obj):
-        cop = obj.cop.all()
+        cop = obj.cops.all()
         return COPOutputSerializer(cop,many=True).data   
      
     def get_role(self,obj):
-        roles = obj.role.all()
+        roles = obj.roles.all()
         return RolesOutputSerializer(roles,many=True).data
     
     def get_school(self, obj):
         # obj é a instância do modelo User que está sendo serializada
-        schools = obj.school.all()  # Recupera todas as escolas associadas ao usuário
+        schools = obj.schools.all()  # Recupera todas as escolas associadas ao usuário
         return SchoolOutputSerializer(schools, many=True).data
     
