@@ -25,6 +25,12 @@ QUERY_PARAM_LIST_USER = [
         type=openapi.TYPE_BOOLEAN,
         description="Se definido como True, a consulta buscará usuários excluídos. Se definido como False, buscará todos os usuários ativos. Se não for especificado, retornará ambas as opções.",
     ),
+    openapi.Parameter(
+        name="all",
+        in_=openapi.IN_QUERY,
+        type=openapi.TYPE_BOOLEAN,
+        description="Se definido como True, a consulta buscará todos usuários sem paginação.",
+    ),
     # Adicione outros parâmetros de consulta conforme necessário.
 ]
 

@@ -33,5 +33,11 @@ QUERY_PARAM_LIST_COP = [
         type=openapi.TYPE_BOOLEAN,
         description="Se definido como True, a consulta buscará delegacias excluídas. Se definido como False, buscará todas as delegacias ativas. Se não for especificado, retornará ambas as opções.",
     ),
+     openapi.Parameter(
+        name="all",
+        in_=openapi.IN_QUERY,
+        type=openapi.TYPE_BOOLEAN,
+        description="Se definido como True, a consulta buscará todas as delegacias sem paginação.",
+    ),
     # Adicione outros parâmetros de consulta conforme necessário.
 ]

@@ -33,7 +33,12 @@ QUERY_PARAM_LIST_SCHOOL = [
         type=openapi.TYPE_BOOLEAN,
         description="Se definido como True, a consulta buscará escolas excluídas. Se definido como False, buscará todas as escolas ativas. Se não for especificado, retornará ambas as opções.",
     ),
-    # Adicione outros parâmetros de consulta conforme necessário.
+     openapi.Parameter(
+        name="all",
+        in_=openapi.IN_QUERY,
+        type=openapi.TYPE_BOOLEAN,
+        description="Se definido como True, a consulta buscará todas as escolas sem paginação.",
+    ),
 ]
 
 

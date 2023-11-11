@@ -33,7 +33,13 @@ class RolesListApi(ApiAuthMixin,APIView):
         
         filters_serializer = self.filter_serializer(data=request.query_params)
         filters_serializer.is_valid(raise_exception=True)
-
+        all =  request.query_params.get("all")
+        if all == 'true':
+            # Se o parâmetro 'all' estiver presente, retorne todos os registros sem paginar
+            roles = role_list(filters=filters_serializer.validated_data)
+            serializer = self.output_serializer(roles, many=True)
+            return Response(serializer.data)
+        
         roles = role_list(filters=filters_serializer.validated_data)
 
         return get_paginated_response(
