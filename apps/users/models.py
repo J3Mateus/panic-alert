@@ -9,7 +9,7 @@ from apps.common.models.base_model import BaseModel
 from apps.cop.models import COP
 from apps.role.models import Roles
 from apps.school.models import School
-
+from apps.counties.models import Counties
 # Taken from here:
 # https://docs.djangoproject.com/en/3.0/topics/auth/customizing/#a-full-example
 # With some modifications

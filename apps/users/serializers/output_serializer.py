@@ -11,7 +11,7 @@ class RolesOutputSerializer(serializers.Serializer):
 class UserOutputSerializer(serializers.Serializer):
     id = serializers.UUIDField()
     full_name  = serializers.CharField(required=False)
-    role       = serializers.SerializerMethodField(required=False)
+    roles      = serializers.SerializerMethodField(required=False)
     email      = serializers.CharField(required=False)
     phone      = serializers.CharField(required=False)
     schools     = serializers.SerializerMethodField(required=False)
@@ -23,11 +23,11 @@ class UserOutputSerializer(serializers.Serializer):
         cop = obj.cops.all()
         return COPOutputSerializer(cop,many=True).data   
      
-    def get_role(self,obj):
+    def get_roles(self,obj):
         roles = obj.roles.all()
         return RolesOutputSerializer(roles,many=True).data
     
-    def get_school(self, obj):
+    def get_schools(self, obj):
         # obj é a instância do modelo User que está sendo serializada
         schools = obj.schools.all()  # Recupera todas as escolas associadas ao usuário
         return SchoolOutputSerializer(schools, many=True).data

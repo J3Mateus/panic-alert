@@ -7,8 +7,9 @@ REQUEST_COP_CREATE = openapi.Schema(
                 'address': openapi.Schema(type=openapi.TYPE_STRING, description='Endereço da delegacia'),
                 'geolocation': openapi.Schema(type=openapi.TYPE_STRING, description='Geolocalização da delegacia'),
                 'responsible': openapi.Schema(type=openapi.TYPE_STRING, description='ID do responsável da delegacia'),
+                'countie': openapi.Schema(type=openapi.TYPE_STRING, description='ID do muncipio da delegacia'), 
             },
-            required=['name', 'address','geolocation','responsible'],
+            required=['name', 'address','geolocation','responsible','countie'],
 )
 
 REQUEST_COP_UPDATE = openapi.Schema(
@@ -19,5 +20,6 @@ REQUEST_COP_UPDATE = openapi.Schema(
         "responsible": openapi.Schema(type=openapi.TYPE_STRING, description="O nome do responsável pela delegacia"),
         "geolocation": openapi.Schema(type=openapi.TYPE_STRING, description="A geolocalização da delegacia"),      
         "is_deleted": openapi.Schema(type=openapi.TYPE_STRING, description="Estado da delegacia no banco de dados"),      
+        'countie': openapi.Schema(type=openapi.TYPE_STRING, description='ID do muncipio da delegacia'), 
     }
 )

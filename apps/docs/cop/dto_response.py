@@ -1,40 +1,50 @@
 DTO_RESPONSE_GET_ALL_COP = {
-	"limit": 20,
-	"offset": 0,
-	"count": 1,
-	"next": None,
-	"previous": None,
-	"results": [
-		{
-			"id": "fa2fa213-c63e-47e1-8637-3311d97d7e01",
-			"responsible": {
-				"id": "762ffa0d-da4d-4baf-bbf2-51bd4bb0e17a",
-				"full_name": "José Mateus",
-				"email": "admin@admin.com",
-				"phone": "82 9913-2309",
-				"is_active": True
-			},
-			"name": "4ª Delegacia Regional de Polícia",
-			"address": "Rua Miguel Correia de Amorim, 936 - Baixão, Arapiraca - AL, 57305     495",
-			"geolocation": "-892 , -896",
-			"is_deleted": False
-		}
-	]
+  "limit": 20,
+  "offset": 0,
+  "count": 1,
+  "next": None,
+  "previous": None,
+  "results": [
+    {
+      "id": "fb9eb89e-dfda-40be-be53-f2f398a5c3ec",
+      "responsible": {
+        "id": "908d314f-78de-4f5b-b528-6d5912f5eae2",
+        "full_name": "José Mateus Rian das Chagas",
+        "email": "admin@admin.com",
+        "phone": "82 9913-3059",
+        "is_active": True
+      },
+      "name": "teste",
+      "address": "teste",
+      "geolocation": "teste",
+      "countie": {
+        "id": "50dfb2bf-4600-48e7-b7e2-3abaa9f55135",
+        "name": "Arapiraca",
+        "code": "d1709518"
+      },
+      "is_deleted": False
+    }
+  ]
 }
 
 DTO_RESPONSE_DETAIL_COP = {
-	"id": "fa2fa213-c63e-47e1-8637-3311d97d7e01",
-	"responsible": {
-		"id": "762ffa0d-da4d-4baf-bbf2-51bd4bb0e17a",
-		"full_name": "José Mateus",
-		"email": "admin@admin.com",
-		"phone": "82 9913-2309",
-		"is_active": True
-	},
-	"name": "4ª Delegacia Regional de Polícia",
-	"address": "Rua Miguel Correia de Amorim, 936 - Baixão, Arapiraca - AL, 57305     495",
-	"geolocation": "-892 , -896",
-	"is_deleted": False
+  "id": "fb9eb89e-dfda-40be-be53-f2f398a5c3ec",
+  "responsible": {
+    "id": "908d314f-78de-4f5b-b528-6d5912f5eae2",
+    "full_name": "José Mateus Rian das Chagas",
+    "email": "admin@admin.com",
+    "phone": "82 9913-3059",
+    "is_active": True
+  },
+  "name": "teste",
+  "address": "teste",
+  "geolocation": "teste",
+  "countie": {
+    "id": "50dfb2bf-4600-48e7-b7e2-3abaa9f55135",
+    "name": "Arapiraca",
+    "code": "d1709518"
+  },
+  "is_deleted": False
 }
 
 DTO_RESPONSE_DETAIL_BAD_REQUEST = {
@@ -64,20 +74,24 @@ DTO_RESPONSE_DENIED = {
 }
 
 DTO_RESPONSE_COP_CREATED = {
-	"id": "fa2fa213-c63e-47e1-8637-3311d97d7e01",
-	"responsible": {
-		"id": "762ffa0d-da4d-4baf-bbf2-51bd4bb0e17a",
-		"full_name": "José Mateus",
-		"email": "admin@admin.com",
-		"phone": "82 9913-2309",
-		"is_active": True
-	},
-	"name": "4ª Delegacia Regional de Polícia",
-	"address": "Rua Miguel Correia de Amorim, 936 - Baixão, Arapiraca - AL, 57305     495",
-	"geolocation": "-892 , -896",
-	"is_deleted": False
+  "id": "fb9eb89e-dfda-40be-be53-f2f398a5c3ec",
+  "responsible": {
+    "id": "908d314f-78de-4f5b-b528-6d5912f5eae2",
+    "full_name": "José Mateus Rian das Chagas",
+    "email": "admin@admin.com",
+    "phone": "82 9913-3059",
+    "is_active": True
+  },
+  "name": "teste",
+  "address": "teste",
+  "geolocation": "teste",
+  "countie": {
+    "id": "50dfb2bf-4600-48e7-b7e2-3abaa9f55135",
+    "name": "Arapiraca",
+    "code": "d1709518"
+  },
+  "is_deleted": False
 }
-
 DTO_RESPONSE_CREATE_BAD_REQUEST = {
 	"message": "Validation error",
 	"extra": {
@@ -90,33 +104,43 @@ DTO_RESPONSE_CREATE_BAD_REQUEST = {
 }
 
 DTO_RESPONSE_UPDATE_SUCESS = {
-	"id": "fa2fa213-c63e-47e1-8637-3311d97d7e01",
-	"responsible": {
-		"id": "762ffa0d-da4d-4baf-bbf2-51bd4bb0e17a",
-		"full_name": "José Mateus",
-		"email": "admin@admin.com",
-		"phone": "82 9913-2309",
-		"is_active": True
-	},
-	"name": "5º Delegacia Regional de Polícia",
-	"address": "Rua Miguel Correia de Amorim, 936 - Baixão, Arapiraca - AL, 57305     495",
-	"geolocation": "-892 , -896",
-	"is_deleted": True
+  "id": "fb9eb89e-dfda-40be-be53-f2f398a5c3ec",
+  "responsible": {
+    "id": "908d314f-78de-4f5b-b528-6d5912f5eae2",
+    "full_name": "José Mateus Rian das Chagas",
+    "email": "admin@admin.com",
+    "phone": "82 9913-3059",
+    "is_active": True
+  },
+  "name": "teste",
+  "address": "teste",
+  "geolocation": "teste",
+  "countie": {
+    "id": "6ee5db60-7377-4fe6-bad3-a21cc0e1c829",
+    "name": "Coité do Nóia",
+    "code": "d86a8032"
+  },
+  "is_deleted": False
 }
 
 DTO_RESPONSE_DELETE_SUCESS = {
-	"id": "fa2fa213-c63e-47e1-8637-3311d97d7e01",
-	"responsible": {
-		"id": "762ffa0d-da4d-4baf-bbf2-51bd4bb0e17a",
-		"full_name": "José Mateus",
-		"email": "admin@admin.com",
-		"phone": "82 9913-2309",
-		"is_active": True
-	},
-	"name": "5º Delegacia Regional de Polícia",
-	"address": "Rua Miguel Correia de Amorim, 936 - Baixão, Arapiraca - AL, 57305     495",
-	"geolocation": "-892 , -896",
-	"is_deleted": True
+  "id": "fb9eb89e-dfda-40be-be53-f2f398a5c3ec",
+  "responsible": {
+    "id": "908d314f-78de-4f5b-b528-6d5912f5eae2",
+    "full_name": "José Mateus Rian das Chagas",
+    "email": "admin@admin.com",
+    "phone": "82 9913-3059",
+    "is_active": True
+  },
+  "name": "teste",
+  "address": "teste",
+  "geolocation": "teste",
+  "countie": {
+    "id": "50dfb2bf-4600-48e7-b7e2-3abaa9f55135",
+    "name": "Arapiraca",
+    "code": "d1709518"
+  },
+  "is_deleted": True
 }
 
 DTO_RESPONSE_NOT_AUTH = {
