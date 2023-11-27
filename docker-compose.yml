@@ -25,7 +25,7 @@ services:
   database:
     image: postgres:15
     volumes:
-      - /postgres_data:/var/lib/postgresql/data/
+      - /postgres_data/school-alert:/var/lib/postgresql/data
     container_name: database
     environment:
       - POSTGRES_USER=postgres

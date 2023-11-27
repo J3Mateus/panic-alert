@@ -7,4 +7,5 @@ urlpatterns = [
     path("role/", include(("apps.role.urls", "role"))),
     path("cop/", include(("apps.cop.urls", "cop"))),
     path("counties/", include(("apps.counties.urls", "counties"))),
+    path("address/", include(("apps.address.urls", "address"))),
 ]

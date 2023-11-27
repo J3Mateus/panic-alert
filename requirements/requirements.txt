@@ -9,3 +9,4 @@ django-filter
 drf-yasg
 django-cors-headers
 djangorestframework-simplejwt
+requests

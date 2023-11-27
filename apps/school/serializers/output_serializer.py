@@ -15,11 +15,18 @@ class CountieOutputSerializer(serializers.Serializer):
     name = serializers.CharField()
     code = serializers.CharField()
     
+class AddressOutputSerializer(serializers.Serializer):
+    zipCode = serializers.CharField()
+    district = serializers.CharField()
+    uf = serializers.CharField()
+    location = serializers.CharField()
+    publicArea = serializers.CharField()
+    
 class SchoolOutputSerializer(serializers.Serializer):
     id = serializers.UUIDField()
-    responsible  = BaseUserSerializer()
-    name = serializers.CharField()
-    address = serializers.CharField()
+    responsible = BaseUserSerializer()
+    name        = serializers.CharField()
     geolocation = serializers.CharField()
-    countie    = CountieOutputSerializer()
-    is_deleted = serializers.BooleanField()
+    address     = AddressOutputSerializer()
+    countie     = CountieOutputSerializer()
+    is_deleted  = serializers.BooleanField()
