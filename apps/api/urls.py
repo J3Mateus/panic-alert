@@ -8,4 +8,6 @@ urlpatterns = [
     path("cop/", include(("apps.cop.urls", "cop"))),
     path("counties/", include(("apps.counties.urls", "counties"))),
     path("address/", include(("apps.address.urls", "address"))),
+    path("type_incident/", include(("apps.type_incident.urls", "type_incident"))),
+    path("button/", include(("apps.button.urls", "button"))),
 ]

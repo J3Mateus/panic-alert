@@ -53,7 +53,7 @@ class CountieDetailApi(ApiAuthMixin, APIView):
         responses=RESPONSE_COUNTIE_BY_ID,
     )     
     def get(self, request, countie_id):
-        countie = countie_get(Counties, id=countie_id)
+        countie = countie_get(id=countie_id)
         if countie is None:
             return Response(status=404)
         data = self.output_serializer(countie).data

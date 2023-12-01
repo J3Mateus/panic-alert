@@ -14,14 +14,23 @@ class CountieOutputSerializer(serializers.Serializer):
     id = serializers.UUIDField()
     name = serializers.CharField()
     code = serializers.CharField()
-
+    
 class AddressOutputSerializer(serializers.Serializer):
     zipCode = serializers.CharField()
     district = serializers.CharField()
     uf = serializers.CharField()
     location = serializers.CharField()
     publicArea = serializers.CharField()
-        
+       
+class SchoolOutputSerializer(serializers.Serializer):
+    id = serializers.UUIDField()
+    responsible = BaseUserSerializer()
+    name        = serializers.CharField()
+    geolocation = serializers.CharField()
+    address     = AddressOutputSerializer()
+    countie     = CountieOutputSerializer()
+    is_deleted  = serializers.BooleanField()
+
 class COPOutputSerializer(serializers.Serializer):
     id = serializers.UUIDField()
     name = serializers.CharField()
@@ -30,3 +39,17 @@ class COPOutputSerializer(serializers.Serializer):
     geolocation = serializers.CharField()
     countie    = CountieOutputSerializer()
     is_deleted = serializers.BooleanField()
+
+
+class TypeIncidentSerializer(serializers.Serializer):
+    id   = serializers.UUIDField()
+    name = serializers.CharField()
+    code = serializers.CharField()
+    
+class ButtonOutputSerializer(serializers.Serializer):
+    id = serializers.UUIDField()
+    type_incident = TypeIncidentSerializer
+    teacher  = BaseUserSerializer()
+    school  = SchoolOutputSerializer()
+    cop = COPOutputSerializer()
+    status = serializers.CharField()

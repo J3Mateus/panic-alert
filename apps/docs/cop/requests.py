@@ -4,7 +4,7 @@ REQUEST_COP_CREATE = openapi.Schema(
             type=openapi.TYPE_OBJECT,
             properties={
                 'name': openapi.Schema(type=openapi.TYPE_STRING, description='Nome da delegacia'),
-                'address': openapi.Schema(type=openapi.TYPE_STRING, description='Endereço da delegacia'),
+                'address': openapi.Schema(type=openapi.TYPE_OBJECT, description='Endereço da delegacia'),
                 'geolocation': openapi.Schema(type=openapi.TYPE_STRING, description='Geolocalização da delegacia'),
                 'responsible': openapi.Schema(type=openapi.TYPE_STRING, description='ID do responsável da delegacia'),
                 'countie': openapi.Schema(type=openapi.TYPE_STRING, description='ID do muncipio da delegacia'), 
