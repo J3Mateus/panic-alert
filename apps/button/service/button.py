@@ -3,17 +3,14 @@ from django.forms import ValidationError
 
 from apps.common.services.common_update import model_update
 
-from apps.school.models import School
 from apps.users.models import BaseUser
 from apps.cop.models import COP
 from apps.button.models import Button
-from apps.counties.models import Counties
 from apps.type_incident.models import Type_Incident
 
-from apps.school.selectors.selector import school_get
 from apps.users.selectors.user import user_get
-from apps.cop.selectors.selector import cop_get
 
+@transaction.atomic
 def button_create(*,user: BaseUser) -> Button:
     try:
         user_instance = user_get(pk=user.pk)
@@ -51,3 +48,11 @@ def button_create(*,user: BaseUser) -> Button:
         # Handle validation errors, log them, or re-raise as needed
         print(f"Validation Error: {ve}")
         return None
+
+@transaction.atomic
+def button_update(*, button: Button, data) -> Button:
+    non_side_effect_fields = ["type_incident","concluded_by","updater_by","responsible","description","problem_solving","status"]
+
+    new_button, has_updated = model_update(instance=button, fields=non_side_effect_fields, data=data)
+
+    return new_button

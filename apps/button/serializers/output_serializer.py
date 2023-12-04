@@ -53,3 +53,6 @@ class ButtonOutputSerializer(serializers.Serializer):
     school  = SchoolOutputSerializer()
     cop = COPOutputSerializer()
     status = serializers.CharField()
+    description= serializers.CharField()
+    responsible = BaseUserSerializer()
+    problem_solving = serializers.CharField()

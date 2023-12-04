@@ -15,13 +15,13 @@ class Button(BaseModel):
 
     type_incident = models.ForeignKey(Type_Incident, on_delete=models.SET_NULL, related_name='type_incident_button', null=True)
     teacher = models.ForeignKey('users.BaseUser', on_delete=models.SET_NULL, related_name='teacher_button', null=True)
-    concluded_by = models.ForeignKey('users.BaseUser', on_delete=models.SET_NULL, related_name='concluded_by_button', null=True)
-    updater_by = models.ForeignKey('users.BaseUser', on_delete=models.SET_NULL, related_name='updater_by_button', null=True)
+    concluded_by = models.ForeignKey('users.BaseUser', on_delete=models.SET_NULL, related_name='concluded_by_button', null=True,blank=True)
+    updater_by = models.ForeignKey('users.BaseUser', on_delete=models.SET_NULL, related_name='updater_by_button', null=True,blank=True)
     school = models.ForeignKey(School, on_delete=models.SET_NULL, related_name='school_button', null=True)
     cop = models.ForeignKey(COP, on_delete=models.SET_NULL, related_name='cop_button', null=True)
-    responsible = models.ForeignKey('users.BaseUser', on_delete=models.SET_NULL, related_name='responsible_button', null=True,default=None)
+    responsible = models.ForeignKey('users.BaseUser', on_delete=models.SET_NULL, related_name='responsible_button', null=True,blank=True,default=None)
     description = models.TextField(verbose_name='Descrição do alerta', null=True,default='')
-    problem_solving = models.TextField(verbose_name='Resolução do problema', max_length=500,null=True,default='')    
+    problem_solving = models.TextField(verbose_name='Resolução do problema', max_length=500,null=True,default='',blank=True)    
     status = models.CharField(max_length=50, choices=STATUS_CHOICES)
     
     def __str__(self):
