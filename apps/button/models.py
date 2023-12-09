@@ -20,7 +20,7 @@ class Button(BaseModel):
     school = models.ForeignKey(School, on_delete=models.SET_NULL, related_name='school_button', null=True)
     cop = models.ForeignKey(COP, on_delete=models.SET_NULL, related_name='cop_button', null=True)
     responsible = models.ForeignKey('users.BaseUser', on_delete=models.SET_NULL, related_name='responsible_button', null=True,blank=True,default=None)
-    description = models.TextField(verbose_name='Descrição do alerta', null=True,default='')
+    description = models.TextField(verbose_name='Descrição do alerta', null=True,default='',blank=True)
     problem_solving = models.TextField(verbose_name='Resolução do problema', max_length=500,null=True,default='',blank=True)    
     status = models.CharField(max_length=50, choices=STATUS_CHOICES)
     

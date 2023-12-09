@@ -16,12 +16,12 @@ def button_create(*,user: BaseUser) -> Button:
         user_instance = user_get(pk=user.pk)
         
         if user_instance is None:
-            raise ValidationError("User not found.")
+            raise ValidationError("Usuário não encontrado.")
 
         school = user_instance.schools.first()
 
         if school is None:
-            raise ValidationError("User is not associated with any school.")
+            raise ValidationError("O usuário não está associado a nenhuma escola.")
 
         countie = school.countie
         cop = COP.objects.filter(countie=countie).first()
@@ -32,7 +32,7 @@ def button_create(*,user: BaseUser) -> Button:
             teacher=user_instance,
             school=school,
             cop=cop,
-            status="Ocorrência iniciada",
+            status="ocorrencia_iniciada",
         )
 
         button.save()
@@ -45,9 +45,7 @@ def button_create(*,user: BaseUser) -> Button:
         raise ValidationError("COP not found for the associated countie.")
 
     except ValidationError as ve:
-        # Handle validation errors, log them, or re-raise as needed
-        print(f"Validation Error: {ve}")
-        return None
+        raise ValidationError(ve.message)
 
 @transaction.atomic
 def button_update(*, button: Button, data) -> Button:

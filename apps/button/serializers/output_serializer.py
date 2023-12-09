@@ -48,7 +48,7 @@ class TypeIncidentSerializer(serializers.Serializer):
     
 class ButtonOutputSerializer(serializers.Serializer):
     id = serializers.UUIDField()
-    type_incident = TypeIncidentSerializer
+    type_incident = TypeIncidentSerializer()
     teacher  = BaseUserSerializer()
     school  = SchoolOutputSerializer()
     cop = COPOutputSerializer()

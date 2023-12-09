@@ -6,6 +6,7 @@ from rest_framework import status
 from apps.address.serializers.input_serializer import AddressInputSerializer
 from apps.address.serializers.output_serializer import AddressOutputSerializer
 from apps.address.service.address import address_create
+from drf_yasg.utils import swagger_auto_schema
 
 from apps.api.mixins import ApiAuthMixin
 
@@ -13,8 +14,27 @@ from apps.api.mixins import ApiAuthMixin
 class AdressDetailApi(ApiAuthMixin,APIView):
     
     output_serializer = AddressOutputSerializer
-    
+    @swagger_auto_schema(
+        manual_parameters=[
+            # Adicione parâmetros manuais, se necessário
+        ],
+        responses={
+            status.HTTP_200_OK: AddressOutputSerializer(many=False),
+            status.HTTP_400_BAD_REQUEST: "Requisição Inválida",
+            # Adicione outras respostas conforme necessário
+        },
+        operation_summary="Obter Detalhes do Endereço",
+        operation_description="Recupere os detalhes de um endereço específico com base no CEP fornecido.",
+    )
     def get(self,request,cep):
+       """
+        Obtém detalhes de um endereço específico.
+
+        :param request: O objeto de requisição.
+        :param str cep: O CEP (Código Postal) para o endereço.
+
+        :return: Detalhes do endereço.
+       """
        address: Address =  address_get_api(cep)
        
        if address is None:
