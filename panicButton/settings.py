@@ -39,6 +39,7 @@ CSRF_COOKIE_SECURE = False
 CSRF_COOKIE_HTTPONLY = False
 SESSION_COOKIE_SECURE =False
 
+BASE_SOCKET_URL = config("DJANGO_SOCKET_URL",default="http://localhost:3000")
 BASE_BACKEND_URL = config("DJANGO_BASE_BACKEND_URL", default="http://localhost:8000")
 BASE_FRONTEND_URL = config("DJANGO_BASE_FRONTEND_URL", default="https://tender-grand-duck.ngrok-free.app")
 CORS_ORIGIN_WHITELIST = config("DJANGO_CORS_ORIGIN_WHITELIST", default=[BASE_FRONTEND_URL])

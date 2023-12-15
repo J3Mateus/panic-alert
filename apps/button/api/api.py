@@ -1,5 +1,6 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
+import socketio
 from apps.api.pagination import LimitOffsetPagination, get_paginated_response
 from apps.button.selectors.selector import button_get, button_list
 from rest_framework import status
@@ -17,7 +18,7 @@ from drf_yasg.utils import swagger_auto_schema
 from apps.docs.button.query_params import QUERY_PARAM_LIST_BUTTON
 from apps.docs.button.requests import REQUEST_BUTTON_UPDATE
 from apps.docs.button.responses import RESPONSE_BUTTON_CREATE, RESPONSE_BUTTON_DETAIL, RESPONSE_BUTTON_LIST, RESPONSE_BUTTON_UPDATE
-
+from panicButton.settings import BASE_SOCKET_URL
 class ButtonListApi(ApiAuthMixin,APIView):
     
     class Pagination(LimitOffsetPagination):
@@ -88,6 +89,12 @@ class ButtonCreateApi(ApiAuthMixin,APIView):
         """        
         button = button_create(user=request.user)
         data = self.output_serializer(button).data
+        
+        with socketio.SimpleClient() as sio:
+            sio = socketio.SimpleClient()
+            sio.connect(BASE_SOCKET_URL)
+            sio.emit("alert",data)
+            
         return Response(status=status.HTTP_201_CREATED,data=data)
 
 class ButtonUpdateApi(ApiAuthMixin, APIView):
