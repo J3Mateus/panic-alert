@@ -73,7 +73,8 @@ DTO_RESPONSE_GET_ALL = {
         "phone": "82 9913.03049",
         "is_active": True
       },
-      "problem_solving": ""
+      "problem_solving": "",
+      "created_at": "2023-12-15T09:04:54.837843-03:00"
     }
   ]
 }
@@ -146,7 +147,8 @@ DTO_RESPONSE_DETAIL = {
     "phone": "82 9913.03049",
     "is_active": True
   },
-  "problem_solving": ""
+  "problem_solving": "",
+  "created_at": "2023-12-15T09:04:54.837843-03:00"
 }
 
 DTO_RESPONSE_BAD_REQUEST = {}
@@ -195,74 +197,74 @@ DTO_RESPONSE_ACCESS_DENIED = {
 }
 
 DTO_RESPONSE_CREATED = {
-  "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "id": "f988beb8-cda2-450b-8a5a-0c9bac4e0742",
+  "type_incident": {
+    "id": "228996cd-aef9-42e9-b1ef-08b89132a37d",
+    "name": "nao_informado",
+    "code": "Não informado"
+  },
   "teacher": {
-    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-    "full_name": "string",
-    "email": "string",
-    "phone": "string",
+    "id": "cb1659a1-20db-486f-bcd6-f9157ab828fa",
+    "full_name": "TIAGO JOSÉ CHAGAS",
+    "email": "jmrc1@aluno.ifal.edu.br",
+    "phone": "82 9.9913-3059",
     "is_active": True
   },
   "school": {
-    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "id": "ad11b416-d611-4ce4-b444-9f4d21646328",
     "responsible": {
-      "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-      "full_name": "string",
-      "email": "string",
-      "phone": "string",
+      "id": "cb1659a1-20db-486f-bcd6-f9157ab828fa",
+      "full_name": "TIAGO JOSÉ CHAGAS",
+      "email": "jmrc1@aluno.ifal.edu.br",
+      "phone": "82 9.9913-3059",
       "is_active": True
     },
-    "name": "string",
-    "geolocation": "string",
+    "name": "E.Q.C - Escola Estadual de Educação Básica Professor José Quintela Cavalcanti",
+    "geolocation": "82,93",
     "address": {
-      "zipCode": "string",
-      "district": "string",
-      "uf": "string",
-      "location": "string",
-      "publicArea": "string"
+      "zipCode": "57300-590",
+      "district": "Centro",
+      "uf": "AL",
+      "location": "Arapiraca",
+      "publicArea": "Rua Expedicionários Brasileiros"
     },
     "countie": {
-      "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-      "name": "string",
-      "code": "string"
+      "id": "fc9c4231-ba94-446c-86cd-30eb51cf2cf6",
+      "name": "Arapiraca",
+      "code": "a508281d"
     },
     "is_deleted": False
   },
   "cop": {
-    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-    "name": "string",
+    "id": "ad06e011-2f78-4eff-8fc2-6a9b7f5a724d",
+    "name": "Delegacia Geral de Polícia Civil",
     "address": {
-      "zipCode": "string",
-      "district": "string",
-      "uf": "string",
-      "location": "string",
-      "publicArea": "string"
+      "zipCode": "57300-590",
+      "district": "Centro",
+      "uf": "AL",
+      "location": "Arapiraca",
+      "publicArea": "Rua Expedicionários Brasileiros"
     },
     "responsible": {
-      "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-      "full_name": "string",
-      "email": "string",
-      "phone": "string",
+      "id": "ca424b55-c18b-4d44-a4ce-b84b1156ebea",
+      "full_name": "JOSÉ MATEUS RIAN DAS CHAGAS",
+      "email": "admin@admin.com",
+      "phone": "82 9.9913-3059",
       "is_active": True
     },
-    "geolocation": "string",
+    "geolocation": "82 ,-28",
     "countie": {
-      "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-      "name": "string",
-      "code": "string"
+      "id": "fc9c4231-ba94-446c-86cd-30eb51cf2cf6",
+      "name": "Arapiraca",
+      "code": "a508281d"
     },
     "is_deleted": False
   },
-  "status": "string",
-  "description": "string",
-  "responsible": {
-    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-    "full_name": "string",
-    "email": "string",
-    "phone": "string",
-    "is_active": True
-  },
-  "problem_solving": "string"
+  "status": "ocorrencia_iniciada",
+  "description": "",
+  "responsible": None,
+  "problem_solving": "",
+  "created_at": "2023-12-15T09:04:54.837843-03:00"
 }
 
 DTO_RESPONSE_UPDATE_SUCESS = {
@@ -333,7 +335,8 @@ DTO_RESPONSE_UPDATE_SUCESS = {
     "phone": "82 9913.03049",
     "is_active": True
   },
-  "problem_solving": ""
+  "problem_solving": "",
+  "created_at": "2023-12-15T09:04:54.837843-03:00"
 }
 
 DTO_RESPONSE_DELETE_SUCESS = {}
