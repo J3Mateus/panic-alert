@@ -2,7 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 import socketio
 from apps.api.pagination import LimitOffsetPagination, get_paginated_response
-from apps.button.selectors.selector import button_get, button_list
+from apps.button.selectors.selector import button_get, button_list, button_list_status
 from rest_framework import status
 from apps.button.serializers.filter_serializer import ButtonFilterSerializer
 from apps.button.serializers.input_serializer import ButtonUpdateInputSerializer
@@ -14,6 +14,7 @@ from apps.api.mixins import ApiAuthMixin
 
 from apps.button.models import Button
 from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
 
 from apps.docs.button.query_params import QUERY_PARAM_LIST_BUTTON
 from apps.docs.button.requests import REQUEST_BUTTON_UPDATE
@@ -74,6 +75,47 @@ class ButtonDetailApi(ApiAuthMixin,APIView):
        
        return Response(status=status.HTTP_200_OK,data=data)
 
+class ButtonListStatusApi(ApiAuthMixin,APIView):
+    
+    @swagger_auto_schema(
+        responses={
+            200: openapi.Response(
+                description="Lista de Status",
+                schema=openapi.Schema(
+                    type=openapi.TYPE_ARRAY,
+                    items=openapi.Schema(
+                        type=openapi.TYPE_OBJECT,
+                        properties={
+                            'value': openapi.Schema(type=openapi.TYPE_STRING),
+                            'label': openapi.Schema(type=openapi.TYPE_STRING)
+                        }
+                    )
+                ),
+                examples={
+                    "application/json": [
+                        {
+                            "value": "ajuda_caminho",
+                            "label": "Ajuda a Caminho"
+                        },
+                        {
+                            "value": "ocorrencia_resolvida",
+                            "label": "Ocorrência Resolvida"
+                        },
+                        {
+                            "value": "ocorrencia_iniciada",
+                            "label": "Ocorrência iniciada"
+                        }
+                    ]
+                }
+            )
+        },
+        operation_summary="Lista de Status",
+        operation_description="Retorna uma lista dos status disponíveis."
+    )
+    def get(self,request):
+        list_status_button = button_list_status()
+        return Response(status=status.HTTP_200_OK,data=list_status_button)
+    
 class ButtonCreateApi(ApiAuthMixin,APIView):
     
     output_serializer = ButtonOutputSerializer

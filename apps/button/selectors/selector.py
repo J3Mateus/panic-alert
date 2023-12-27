@@ -18,3 +18,7 @@ def button_list(*, filters=None) -> QuerySet[Button]:
     qs = Button.objects.all()
 
     return ButtonFilter(filters, qs).qs
+
+def button_list_status() -> list[dict[str, str]]:
+    status_list = [{'value': status[0], 'label': status[1]} for status in Button.STATUS_CHOICES]
+    return status_list

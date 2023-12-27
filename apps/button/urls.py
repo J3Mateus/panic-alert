@@ -5,6 +5,7 @@ from apps.button.api import (
     ButtonDetailApi,
     ButtonUpdateApi,
     ButtonListApi,
+    ButtonListStatusApi
 )
 
 urlpatterns = [
@@ -15,6 +16,7 @@ urlpatterns = [
                 [
                     path("<str:button_id>", ButtonDetailApi.as_view(), name="get_button_by_id"),
                     path("list/all", ButtonListApi.as_view(), name="list_button"),
+                    path("list/status", ButtonListStatusApi.as_view(), name="list_status"),
                 ],
                 "get",
             )
