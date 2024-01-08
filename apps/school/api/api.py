@@ -47,6 +47,9 @@ from apps.api.pagination import (
     get_paginated_response,
 )
 
+from panicButton.settings import BASE_SOCKET_URL
+
+import socketio
 
 class SchoolListApi(ApiAuthMixin,APIView):
     
@@ -114,7 +117,16 @@ class SchoolCreateApi(ApiAuthMixin, APIView):
         serializer.is_valid(raise_exception=True)
 
         school = school_create(**serializer.validated_data,user=request.user)
+        
         data = self.output_serializer(school).data
+        try:
+            with socketio.SimpleClient() as sio:
+                sio = socketio.SimpleClient()
+                sio.connect(BASE_SOCKET_URL)
+                sio.emit("create_room", data.get("id"))
+        except ConnectionError as e:
+            pass
+        
         return Response(status=status.HTTP_201_CREATED,data=data)
 
 class SchoolUpdateApi(ApiAuthMixin, APIView):

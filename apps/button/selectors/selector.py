@@ -15,7 +15,7 @@ def button_get(id: str):
 def button_list(*, filters=None) -> QuerySet[Button]:
     filters = filters or {}
 
-    qs = Button.objects.all()
+    qs = Button.objects.all().order_by('-created_at')
 
     return ButtonFilter(filters, qs).qs
 

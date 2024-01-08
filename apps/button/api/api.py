@@ -1,5 +1,8 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_api_key.permissions import HasAPIKey
+
 import socketio
 from apps.api.pagination import LimitOffsetPagination, get_paginated_response
 from apps.button.selectors.selector import button_get, button_list, button_list_status
@@ -20,11 +23,13 @@ from apps.docs.button.query_params import QUERY_PARAM_LIST_BUTTON
 from apps.docs.button.requests import REQUEST_BUTTON_UPDATE
 from apps.docs.button.responses import RESPONSE_BUTTON_CREATE, RESPONSE_BUTTON_DETAIL, RESPONSE_BUTTON_LIST, RESPONSE_BUTTON_UPDATE
 from panicButton.settings import BASE_SOCKET_URL
-class ButtonListApi(ApiAuthMixin,APIView):
+class ButtonListApi(APIView):
     
     class Pagination(LimitOffsetPagination):
         default_limit = 20
-
+        
+    permission_classes = [HasAPIKey | IsAuthenticated]
+    
     output_serializer = ButtonOutputSerializer
     filter_serializer = ButtonFilterSerializer
     @swagger_auto_schema(

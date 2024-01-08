@@ -64,12 +64,13 @@ LOCAL_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-    "rest_framework",
-    "django_filters",
+    'rest_framework',
+    'django_filters',
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
-    "corsheaders",
+    'corsheaders',
     'drf_yasg',
+    'rest_framework_api_key',
 ]
 
 INSTALLED_APPS = [
