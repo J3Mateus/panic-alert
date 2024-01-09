@@ -138,6 +138,7 @@ class ButtonCreateApi(ApiAuthMixin,APIView):
         data = self.output_serializer(button).data
         
         with socketio.SimpleClient() as sio:
+            print(BASE_SOCKET_URL)
             sio = socketio.SimpleClient()
             sio.connect(BASE_SOCKET_URL)
             sio.emit("alert",data)

@@ -26,11 +26,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-*i7g@d(&5^i)$l23y&8dt8p2_8ov3irhtmkbg=8&=&+xsmp2aq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config("DJANGO_DEBUG",default=False,cast=bool)
 
 ALLOWED_HOSTS=['*']
 
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_ALLOW_ALL = False
 
 #CORS_ALLOW_CREDENTIALS = True
 #CORS_ALLOW_ALL_ORIGINS = True
@@ -39,10 +39,15 @@ CSRF_COOKIE_SECURE = False
 CSRF_COOKIE_HTTPONLY = False
 SESSION_COOKIE_SECURE =False
 
-BASE_SOCKET_URL = config("DJANGO_SOCKET_URL",default="http://localhost:3000")
+BASE_SOCKET_URL = config("DJANGO_URL_SOCKET",default="http://localhost:3001",cast=str)
 BASE_BACKEND_URL = config("DJANGO_BASE_BACKEND_URL", default="http://localhost:8000")
-BASE_FRONTEND_URL = config("DJANGO_BASE_FRONTEND_URL", default="https://tender-grand-duck.ngrok-free.app")
-CORS_ORIGIN_WHITELIST = config("DJANGO_CORS_ORIGIN_WHITELIST", default=[BASE_FRONTEND_URL])
+BASE_FRONTEND_URL = config("DJANGO_BASE_FRONTEND_URL", default="http://localhost:3000")
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    # Produção
+    r'^https?://(\w+\.)?alertaescolar\.com$',
+    # Homologação
+    r'^https?://(localhost|127\.0\.0\.1)(:[3|4|5|8|9][0-9]{3})?$',
+]
 
 SESSION_ENGINE = "django.contrib.sessions.backends.db"
 
