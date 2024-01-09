@@ -13,12 +13,15 @@ from apps.counties.selectors.counties import countie_get, countie_list
 
 from apps.counties.serializers.filter_serializer import CountiesFilterSerializer
 from apps.counties.serializers.output_serializer import CountieOutputSerializer
-
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_api_key.permissions import HasAPIKey
+import socketio
+from panicButton.settings import BASE_SOCKET_URL
 from drf_yasg.utils import swagger_auto_schema
 
 from apps.docs.counties.response import RESPONSE_COUNTIE_BY_ID, RESPONSE_COUNTIE_LIST
 class CountieListApi(ApiAuthMixin,APIView):
-    
+    permission_classes = [HasAPIKey | IsAuthenticated]
     class Pagination(LimitOffsetPagination):
         default_limit = 20
 
@@ -65,3 +68,16 @@ class CountieDetailApi(ApiAuthMixin, APIView):
             return Response(status=404)
         data = self.output_serializer(countie).data
         return Response(status=status.HTTP_200_OK,data=data)
+
+class CountieCreateRoomSocketApi(ApiAuthMixin, APIView):
+    
+    output_serializer = CountieOutputSerializer   
+    def post(self, request):
+        counties = Counties.objects.all()
+        with socketio.SimpleClient() as sio:  # Estabelece a conexão do SocketIO fora do loop
+            sio.connect(BASE_SOCKET_URL)
+            for countie_data in counties:
+                countie_id = str(countie_data.pk)
+                sio.emit("create_room", countie_id)
+                
+        return Response(status=status.HTTP_200_OK)

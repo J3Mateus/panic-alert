@@ -32,6 +32,7 @@ def button_create(*,user: BaseUser) -> Button:
             teacher=user_instance,
             school=school,
             cop=cop,
+            countie=countie,
             status="ocorrencia_iniciada",
         )
 
@@ -49,7 +50,7 @@ def button_create(*,user: BaseUser) -> Button:
 
 @transaction.atomic
 def button_update(*, button: Button, data) -> Button:
-    non_side_effect_fields = ["type_incident","concluded_by","updater_by","responsible","description","problem_solving","status"]
+    non_side_effect_fields = ["type_incident","countie","concluded_by","updater_by","responsible","description","problem_solving","status"]
 
     new_button, has_updated = model_update(instance=button, fields=non_side_effect_fields, data=data)
 

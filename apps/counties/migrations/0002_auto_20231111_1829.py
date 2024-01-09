@@ -3,13 +3,17 @@
 from django.db import migrations
 from apps.counties.models import Counties
 import json 
+from panicButton.settings import BASE_SOCKET_URL
+import socketio
+
 def create_counties(apps, schema_editor):
     data = open('resource/data/counties.json')
     counties = json.load(data)
     
     for countie in counties:
-        Counties.objects.create(name=countie.get("nome"))
-        
+        countie = Counties.objects.create(name=countie.get("nome"))
+
+                   
 class Migration(migrations.Migration):
 
     dependencies = [

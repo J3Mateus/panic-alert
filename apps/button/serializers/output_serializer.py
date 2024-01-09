@@ -56,4 +56,5 @@ class ButtonOutputSerializer(serializers.Serializer):
     description= serializers.CharField()
     responsible = BaseUserSerializer()
     problem_solving = serializers.CharField()
+    countie    = CountieOutputSerializer()
     created_at = serializers.DateTimeField()

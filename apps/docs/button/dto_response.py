@@ -74,6 +74,11 @@ DTO_RESPONSE_GET_ALL = {
         "is_active": True
       },
       "problem_solving": "",
+      "countie": {
+          "id": "0468676f-f994-4b9d-9a65-93e81e879ece",
+          "name": "Arapiraca",
+          "code": "63965742"
+        },
       "created_at": "2023-12-15T09:04:54.837843-03:00"
     }
   ]
@@ -148,6 +153,11 @@ DTO_RESPONSE_DETAIL = {
     "is_active": True
   },
   "problem_solving": "",
+  "countie": {
+    "id": "0468676f-f994-4b9d-9a65-93e81e879ece",
+    "name": "Arapiraca",
+    "code": "63965742"
+  },
   "created_at": "2023-12-15T09:04:54.837843-03:00"
 }
 
@@ -264,6 +274,11 @@ DTO_RESPONSE_CREATED = {
   "description": "",
   "responsible": None,
   "problem_solving": "",
+  "countie": {
+      "id": "0468676f-f994-4b9d-9a65-93e81e879ece",
+      "name": "Arapiraca",
+      "code": "63965742"
+    },
   "created_at": "2023-12-15T09:04:54.837843-03:00"
 }
 
@@ -336,6 +351,11 @@ DTO_RESPONSE_UPDATE_SUCESS = {
     "is_active": True
   },
   "problem_solving": "",
+  "countie": {
+      "id": "0468676f-f994-4b9d-9a65-93e81e879ece",
+      "name": "Arapiraca",
+      "code": "63965742"
+    },
   "created_at": "2023-12-15T09:04:54.837843-03:00"
 }
 

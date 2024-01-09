@@ -1,6 +1,7 @@
 from django.db import models
 
 from apps.common.models.base_model import BaseModel
+from apps.counties.models import Counties
 from apps.school.models import School
 from apps.cop.models import COP
 from apps.type_incident.models import Type_Incident
@@ -23,6 +24,7 @@ class Button(BaseModel):
     description = models.TextField(verbose_name='Descrição do alerta', null=True,default='',blank=True)
     problem_solving = models.TextField(verbose_name='Resolução do problema', max_length=500,null=True,default='',blank=True)    
     status = models.CharField(max_length=50, choices=STATUS_CHOICES)
+    countie = models.ForeignKey(Counties,verbose_name="Município do alerta",null=True, blank=True, on_delete=models.SET_NULL, related_name='countie_button')
     
     def __str__(self):
         return self.name

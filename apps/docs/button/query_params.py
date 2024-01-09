@@ -57,5 +57,11 @@ QUERY_PARAM_LIST_BUTTON = [
         type=openapi.TYPE_BOOLEAN,
         description="Se definido como True, a consulta buscará todas as delegacias sem paginação.",
     ),
+    openapi.Parameter(
+        name="countie",
+        in_=openapi.IN_QUERY,
+        type=openapi.TYPE_STRING,
+        description="ID da cidade de origem que foi gerado o alerta para filtrar os resultados.",
+    ),
     # Adicione outros parâmetros de consulta conforme necessário.
 ]

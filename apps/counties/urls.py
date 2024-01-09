@@ -2,7 +2,8 @@ from django.urls import include, path
 
 from apps.counties.api import (
     CountieDetailApi,
-    CountieListApi
+    CountieListApi,
+    CountieCreateRoomSocketApi
 )
 
 urlpatterns = [
@@ -15,6 +16,17 @@ urlpatterns = [
                     path("list/all", CountieListApi.as_view(), name="list_countie"),
                 ],
                 "get",
+            )
+        ),
+    ),
+    path(
+        "create/",
+        include(
+            (
+                [
+                  path("room", CountieCreateRoomSocketApi.as_view(), name="create_counties"),
+                ],
+                "create",
             )
         ),
     ),

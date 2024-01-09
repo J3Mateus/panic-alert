@@ -10,3 +10,4 @@ class ButtonFilterSerializer(serializers.Serializer):
     cop = serializers.UUIDField(required=False)
     responsible = serializers.UUIDField(required=False)
     status = serializers.CharField(required=False)
+    countie =  serializers.UUIDField(required=False)
