@@ -47,6 +47,8 @@ CORS_ALLOWED_ORIGIN_REGEXES = [
     r'^https?://(\w+\.)?alertaescolar\.com$',
     # Homologação
     r'^https?://(localhost|127\.0\.0\.1)(:[3|4|5|8|9][0-9]{3})?$',
+    # Additional IP and port
+    r'^https?://191\.252\.185\.159:50801$',
 ]
 
 SESSION_ENGINE = "django.contrib.sessions.backends.db"
