@@ -18,3 +18,22 @@ services:
         - ${DOCKER_VOLUME_MEDIA}:/code/run/media
         - ${DOCKER_VOLUME_DOCKER}:/docker
         - ./logs:/code/logs
+
+    networks:
+      - db_rede  
+      
+  database:
+    image: postgres:15
+    container_name: database
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=school-alert
+    ports:
+      - 5432:5432
+    networks:
+      - db_rede
+  
+networks:
+  db_rede:
+    driver: bridge
