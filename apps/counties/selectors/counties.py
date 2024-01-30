@@ -16,6 +16,6 @@ def countie_get(id: str):
 def countie_list(*, filters=None) -> QuerySet[Counties]:
     filters = filters or {}
 
-    qs = Counties.objects.all()
+    qs = Counties.objects.all().filter(released=True)
 
     return CountieFilter(filters, qs).qs

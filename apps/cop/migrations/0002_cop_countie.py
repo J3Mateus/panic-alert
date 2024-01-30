@@ -7,7 +7,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('counties', '0002_auto_20231111_1829'),
+        ('counties', '0003_auto_20240111_1951'),
         ('cop', '0001_initial'),
     ]
 

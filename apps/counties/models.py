@@ -6,7 +6,8 @@ from apps.common.models.base_model import BaseModel
 class Counties(BaseModel):
     name = models.CharField(verbose_name='Nome do município',max_length=500)
     code = models.CharField(verbose_name='Código unico',max_length=500)
-
+    released = models.BooleanField(verbose_name='Cidade liberada',default=False)
+    
     def __str__(self):
         return self.name
     
