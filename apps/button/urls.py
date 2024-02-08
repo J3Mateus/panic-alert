@@ -27,7 +27,7 @@ urlpatterns = [
         include(
             (
                 [
-                  path("", ButtonCreateApi.as_view(), name="create_button"),
+                  path("<str:school_id>", ButtonCreateApi.as_view(), name="create_button"),
                 ],
                 "create",
             )

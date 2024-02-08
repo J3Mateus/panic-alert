@@ -11,14 +11,14 @@ from apps.type_incident.models import Type_Incident
 from apps.users.selectors.user import user_get
 
 @transaction.atomic
-def button_create(*,user: BaseUser) -> Button:
+def button_create(*,school_id: str, user: BaseUser) -> Button:
     try:
         user_instance = user_get(pk=user.pk)
         
         if user_instance is None:
             raise ValidationError("Usuário não encontrado.")
 
-        school = user_instance.schools.first()
+        school = user_instance.schools.get(pk=school_id)
 
         if school is None:
             raise ValidationError("O usuário não está associado a nenhuma escola.")

@@ -130,11 +130,11 @@ class ButtonCreateApi(ApiAuthMixin,APIView):
         operation_summary="Criar um novo Alerta",
         operation_description="Cria uma nova instância de Alerta associada ao usuário atual.",
     )    
-    def post(self,request):
+    def post(self,request,school_id):
         """
         Criar um novo Botão associado ao usuário atual.
         """        
-        button = button_create(user=request.user)
+        button = button_create(school_id=school_id,user=request.user)
         data = self.output_serializer(button).data
         
         with socketio.SimpleClient() as sio:
